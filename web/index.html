@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="$FLUTTER_BASE_HREF">
+
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="Game 2048">
+
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="game2048">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+    <link rel="icon" type="image/png" href="favicon.png"/>
+
+    <title>Delivery Simulator</title>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<div id="tap_to_start"
+     style="visibility: hidden; left: 50%; top: 50%; transform: translate(-50%,-50%); position: absolute;">
+    <button id="tap_to_start_button" style="padding: 8px; font-size: 24pt; font-family:Roboto">Tap
+        to start
+    </button>
+</div>
+
+<div id="loader"
+     style="left: 50%; top: 50%; transform: translate(-50%,-50%); position: absolute; font-size: 16pt; font-family:Roboto"></div>
+<script>
+    {{flutter_js}}
+    {{flutter_build_config}}
+    const divLoader = document.querySelector('#loader');
+    const tapToStart = document.querySelector('#tap_to_start');
+    divLoader.textContent = "Loading game...";
+
+    _flutter.loader.load({
+      onEntrypointLoaded: async function(engineInitializer) {
+        divLoader.textContent = "Initializing engine...";
+        const appRunner = await engineInitializer.initializeEngine();
+        divLoader.style.display = "none";
+        tapToStart.style.visibility = "visible";
+        const button = document.querySelector("#tap_to_start_button");
+        //prefetch audio
+        button.onclick = async function () {
+          tapToStart.style.display = "none";
+          await appRunner.runApp();
+        };
+      }
+    });
+</script>
+</body>
+</html>
