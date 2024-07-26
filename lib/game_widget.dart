@@ -93,6 +93,7 @@ class DeliveryGame extends FlameGame<DeliveryWorld>
     world
       ..cleanup()
       ..build()
+      ..changePlayerLocation(world.currentPlayerId)
       ..updatePlayer(
         world.currentPlayer!,
         updatePosition: true,

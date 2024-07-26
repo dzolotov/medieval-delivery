@@ -6,6 +6,7 @@ import 'package:deliverysim/component/player_sprite.dart';
 import 'package:deliverysim/game_widget.dart';
 import 'package:deliverysim/multiplayer/messages/drop_item.dart';
 import 'package:deliverysim/multiplayer/messages/gameover_player.dart';
+import 'package:deliverysim/multiplayer/messages/player_update.dart';
 import 'package:deliverysim/multiplayer/messages/spawn_player.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -104,6 +105,15 @@ class DeliveryWorld extends World
     //remove from gamemap
     players.remove(uuid);
     multiplayer?.broadcast(GameOverPlayerMessage(uuid: uuid));
+  }
+
+  void changePlayerLocation(String uuid) {
+    placeObject((x, y) {
+      players[uuid]?.x = x;
+      players[uuid]?.y = y;
+      multiplayer?.broadcast(PlayerUpdateMessage(x: x, y: y, uuid: uuid));
+      return true;
+    });
   }
 
   void placeOwnPlayer(String uuid) {
