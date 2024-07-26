@@ -42,7 +42,7 @@ class DeliveryWorld extends World
 
   static const mode3d = false;
 
-  static const enableMultiplayer = true;
+  static const enableMultiplayer = false;
 
   double get scaleFactor => game.size.x > game.size.y ? 0.5 : 1.0;
 

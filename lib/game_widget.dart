@@ -140,7 +140,7 @@ class DeliveryGame extends FlameGame<DeliveryWorld>
       Rectangle.fromRect(
         Vector2(
               -world.mapWidth / 2 * GameTheme.spriteSize * world.scaleFactor,
-              -world.mapHeight * GameTheme.spriteSize * world.scaleFactor,
+              -world.mapHeight / 2 * GameTheme.spriteSize * world.scaleFactor,
             ) &
             Vector2(
               world.mapWidth.toDouble() *
@@ -148,9 +148,7 @@ class DeliveryGame extends FlameGame<DeliveryWorld>
                   world.scaleFactor,
               world.mapHeight.toDouble() *
                   GameTheme.spriteSize *
-                  world.scaleFactor *
-                  viewportResolution.y /
-                  viewportResolution.x,
+                  world.scaleFactor,
             ),
       ),
     );
