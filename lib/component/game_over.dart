@@ -7,17 +7,20 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/text.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart' hide Route;
 
 class GameOverComponent extends PositionComponent
     with TapCallbacks, HasGameRef<DeliveryGame> {
   @override
-  void onTapDown(TapDownEvent event) {
+  void onTapDown(TapDownEvent event) async {
     game.world.players.remove(game.world.currentPlayerId);
     game.world.build();
     game.world.updatePlayer(game.world.currentPlayer!, updatePosition: true);
     game.camera.follow(game.world.currentPlayerComponent!, snap: true);
     game.router.pop();
+    game.world.backgroundMusic =
+        await FlameAudio.loopLongAudio('greensleeves.mp3');
   }
 
   @override
