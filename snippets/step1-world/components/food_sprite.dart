@@ -1,28 +1,21 @@
 import 'dart:async';
 
-import 'package:deliverysim/behaviors/player_pickup_collision_behavior.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
+import 'package:flutter/material.dart';
 
-import '../game_widget.dart';
-import '../theme/theme.dart';
-import '../world/cellitems/map_item.dart';
+import '../../../lib/game_widget.dart';
+import '../../../lib/theme/theme.dart';
+import '../../../lib/world/cellitems/map_item.dart';
 
-class PickupPointSprite extends SpriteComponent
+class FoodSprite extends SpriteComponent
     with HasGameRef<DeliveryGame>, EntityMixin {
-  PickupPoint descriptor;
-
-  String filename;
-
-  PickupPointSprite(
-    this.filename,
-    this.descriptor,
-  );
+  FoodSprite();
 
   @override
   FutureOr<void> onLoad() async {
-    sprite = Sprite(await game.images.load('crystals/$filename'));
+    sprite = Sprite(await game.images.load('tavern.png'));
     size = Vector2.all(GameTheme.spriteSize*game.world.scaleFactor);
     add(
       RectangleHitbox(

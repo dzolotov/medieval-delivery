@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flame/game.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'game_widget.dart';
-import 'world/world.dart';
+import '../../lib/game_widget.dart';
+import '../../lib/world/world.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,6 @@ void main() {
     world.backgroundMusic?.resume();
   }, onExitRequested: () async {
     world.backgroundMusic?.stop();
-    world.multiplayer?.disconnect();
     return AppExitResponse.exit;
   });
   runApp(

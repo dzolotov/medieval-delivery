@@ -5,9 +5,9 @@ import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
 import 'package:flutter/material.dart';
 
-import '../game_widget.dart';
-import '../theme/theme.dart';
-import '../world/cellitems/map_item.dart';
+import '../../../lib/game_widget.dart';
+import '../../../lib/theme/theme.dart';
+import '../../../lib/world/cellitems/map_item.dart';
 
 class DropSprite extends SpriteComponent
     with HasGameRef<DeliveryGame>, EntityMixin {

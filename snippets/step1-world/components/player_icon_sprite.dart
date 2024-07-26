@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/sprite.dart';
 
-import '../game_widget.dart';
+import '../../../lib/game_widget.dart';
 
 class PlayerIconSprite extends PositionComponent
     with HasGameRef<DeliveryGame>, TapCallbacks {
