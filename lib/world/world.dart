@@ -374,6 +374,12 @@ class DeliveryWorld extends World
       case 'playerUpdate':
         log('Player update $uuid, x: ${message['x']}, y: ${message['y']}',
             name: 'WebRTC ${multiplayer?.self}');
+        players[uuid]?.x = message['x'];
+        players[uuid]?.y = message['y'];
+        players[uuid]?.isMirrored = message['isMirrored'];
+        players[uuid]?.isDead = message['isDead'];
+        players[uuid]?.isResting = message['isResting'];
+        game.world.updatePlayer(players[uuid]!, updatePosition: true);
       case 'requestInitialState':
         log('Requesting initial state', name: 'WebRTC ${multiplayer?.self}');
         log('Send state to $from: $players, $gameMap',
